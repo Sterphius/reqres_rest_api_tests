@@ -14,29 +14,29 @@ patch_user_data = {
 }
 
 
-def test_create_user():
-    result: Response = requests.post('https://reqres.in/api/users/2', data=sample_user_data)
+def test_create_user(reqres):
+    result: Response = reqres.post('api/users/2', data=sample_user_data)
 
     assert result.status_code == 201
     assert result.json() == S(user_schema)
 
 
-def test_patch_user():
-    result: Response = requests.patch('https://reqres.in/api/users/2', data=patch_user_data)
+def test_patch_user(reqres):
+    result: Response = reqres.patch('api/users/2', data=patch_user_data)
 
     assert result.status_code == 200
     assert result.json() == S(user_schema)
 
 
-def test_update_user():
-    result: Response = requests.put('https://reqres.in/api/users/2', data=patch_user_data)
+def test_update_user(reqres):
+    result: Response = reqres.put('api/users/2', data=patch_user_data)
 
     assert result.status_code == 200
     assert result.json() == S(user_schema)
 
 
-def test_delete_user():
-    result: Response = requests.delete('https://reqres.in/api/users/2')
+def test_delete_user(reqres):
+    result: Response = reqres.delete('api/users/2')
 
     assert result.status_code == 204
 

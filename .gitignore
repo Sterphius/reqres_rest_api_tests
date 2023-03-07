@@ -1,2 +1,4 @@
 .idea/*
 *__pycache__*
+*allure-report*
+*allure-results*
