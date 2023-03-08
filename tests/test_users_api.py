@@ -1,4 +1,3 @@
-import requests
 from pytest_voluptuous import S
 from schemas.single_user_schema import user_schema
 from requests import Response
@@ -15,21 +14,21 @@ patch_user_data = {
 
 
 def test_create_user(reqres):
-    result: Response = reqres.post('api/users/2', data=sample_user_data)
+    result: Response = reqres.post('/api/users/2', data=sample_user_data)
 
     assert result.status_code == 201
     assert result.json() == S(user_schema)
 
 
 def test_patch_user(reqres):
-    result: Response = reqres.patch('api/users/2', data=patch_user_data)
+    result: Response = reqres.patch('/api/users/2', data=patch_user_data)
 
     assert result.status_code == 200
     assert result.json() == S(user_schema)
 
 
 def test_update_user(reqres):
-    result: Response = reqres.put('api/users/2', data=patch_user_data)
+    result: Response = reqres.put('/api/users/2', data=patch_user_data)
 
     assert result.status_code == 200
     assert result.json() == S(user_schema)

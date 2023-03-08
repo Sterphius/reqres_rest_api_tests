@@ -14,14 +14,14 @@ user_wo_pass = {
 
 
 def test_success_login(reqres):
-    result: Response = reqres.post('api/login', data=some_user)
+    result: Response = reqres.post('/api/login', data=some_user)
 
     assert result.status_code == 200
     assert result.json() == S(login_schema)
 
 
 def test_unsuccess_login(reqres):
-    result: Response = reqres.post('api/login', data=user_wo_pass)
+    result: Response = reqres.post('/api/login', data=user_wo_pass)
 
     assert result.status_code == 400
     assert result.json() == S(error_schema)
